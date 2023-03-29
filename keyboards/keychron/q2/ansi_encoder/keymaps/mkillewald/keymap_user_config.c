@@ -18,7 +18,7 @@
 #include "keymap_user_config.h"
 
 typedef union {
-  char raw[32];
+  char raw[9];
   struct {
     char c1_r;
     char c1_g;
