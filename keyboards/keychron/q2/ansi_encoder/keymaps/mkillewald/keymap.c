@@ -27,6 +27,17 @@ enum layers{
     _FN3
 };
 
+enum my_keycodes {
+#ifdef VIA_ENABLE
+    KC_CHGC1 = QK_KB_11,   // USER11 here gave compile error (not defined)
+                               // indexed at 11 to appear after Keychron's keycodes
+#else
+    KC_CHGC1 = SAFE_RANGE,
+#endif
+    KC_CHGC2,
+    KC_CHGC3
+};
+
 keypos_t led_index_key_position[RGB_MATRIX_LED_COUNT];
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -46,7 +57,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_FN1] = LAYOUT_ansi_67(
         KC_GRV,  KC_BRID,  KC_BRIU, KC_MCTL, KC_LPAD, RGB_VAD, RGB_VAI, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE,  KC_VOLD,  KC_VOLU,  _______,          RGB_TOG,
-        RGB_TOG, RGB_MOD,  RGB_VAI, RGB_HUI, RGB_SAI, RGB_SPI, _______, _______, _______, _______, _______,  _______,  _______,  _______,          _______,
+        RGB_TOG, RGB_MOD,  RGB_VAI, RGB_HUI, RGB_SAI, RGB_SPI, KC_CHGC1, _______, _______, _______, _______,  _______,  _______,  _______,          _______,
         _______, RGB_RMOD, RGB_VAD, RGB_HUD, RGB_SAD, RGB_SPD, _______, _______, _______, _______, _______,  _______,            _______,          _______,
         _______,           _______, _______, _______, _______, _______, NK_TOGG, _______, _______, _______,  _______,            _______, _______,
         _______, _______,  _______,                            _______,                            _______,  _______,  _______,  _______, _______, _______),
@@ -79,6 +90,16 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (!process_record_keychron(keycode, record)) {
         return false;
+    }
+    
+    switch (keycode) {
+        case KC_CHGC1:
+            if (record->event.pressed) {
+                user_config_set_c1(0xff, 0xff, 0x00); // set c1 yellow, and save to eeprom
+            }
+            return false;  // Skip all further processing of this key         
+        default:
+            return true;  // Process all other keycodes normally
     }
 
     return true;

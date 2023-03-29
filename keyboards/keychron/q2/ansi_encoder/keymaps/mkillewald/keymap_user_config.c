@@ -67,3 +67,10 @@ char user_config_c2_b(void) { return user_config.c2_b; }
 char user_config_c3_r(void) { return user_config.c3_r; }
 char user_config_c3_g(void) { return user_config.c3_g; }
 char user_config_c3_b(void) { return user_config.c3_b; }
+
+void user_config_set_c1(char r, char g, char b) {
+    user_config.c1_r = r;
+    user_config.c1_g = g;
+    user_config.c1_b = b;
+    user_config_write();
+}

@@ -30,3 +30,5 @@ char user_config_c2_b(void);
 char user_config_c3_r(void);
 char user_config_c3_g(void);
 char user_config_c3_b(void);
+
+void user_config_set_c1(char r, char g, char b);
