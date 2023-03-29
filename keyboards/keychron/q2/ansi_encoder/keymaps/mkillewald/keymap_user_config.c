@@ -17,9 +17,7 @@
 #include QMK_KEYBOARD_H
 #include "keymap_user_config.h"
 
-typedef union {
-  char raw[9];
-  struct {
+typedef struct {
     char c1_r;
     char c1_g;
     char c1_b;
@@ -31,14 +29,11 @@ typedef union {
     char c3_r;
     char c3_g;
     char c3_b;
-  };
 } user_config_t;
 
 user_config_t user_config;
 
 void eeconfig_init_user(void) {
-    memset(user_config.raw, 0, sizeof(user_config.raw));
- 
     user_config.c1_r = 0x44;  // purple
     user_config.c1_g = 0x00;
     user_config.c1_b = 0xff;
