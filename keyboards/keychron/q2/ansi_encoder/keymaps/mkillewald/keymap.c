@@ -29,8 +29,8 @@ enum layers{
 
 enum my_keycodes {
 #ifdef VIA_ENABLE
-    KC_CHGC1 = QK_KB_11,   // USER11 here gave compile error (not defined)
-                               // indexed at 11 to appear after Keychron's keycodes
+    KC_CHGC1 = QK_KB_11,    // USER11 here gave compile error (not defined)
+                            // indexed at 11 to appear after Keychron's keycodes
 #else
     KC_CHGC1 = SAFE_RANGE,
 #endif
