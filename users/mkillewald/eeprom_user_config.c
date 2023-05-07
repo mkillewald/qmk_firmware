@@ -18,6 +18,7 @@
 #include "eeprom_user_config.h"
 
 typedef struct {
+    uint8_t cyber_colors_enable;
     uint8_t caps_lock_light_tab;
     uint8_t caps_lock_light_alphas;
     uint8_t fn_layer_transparent_keys_off;
@@ -35,6 +36,7 @@ typedef struct {
 user_config_t user_config;
 
 void eeconfig_init_user(void) {
+    user_config.cyber_colors_enable = DEFAULT_CYBER_COLORS_ENABLE;
     user_config.caps_lock_light_tab = DEFAULT_CAPS_LOCK_LIGHT_TAB;
     user_config.caps_lock_light_alphas = DEFAULT_CAPS_LOCK_LIGHT_ALPHA;
     user_config.fn_layer_transparent_keys_off = DEFAULT_FN_LAYER_TRANSPARENT_OFF;
@@ -58,6 +60,10 @@ void user_config_write_eeprom(void) {
 }
 
 // getters
+
+uint8_t user_config_get_cyber_colors_enable(void) {
+    return user_config.cyber_colors_enable;
+}
 
 uint8_t user_config_get_caps_lock_light_tab(void) {
     return user_config.caps_lock_light_tab;
@@ -108,6 +114,11 @@ HSV user_config_get_hsv_fn2(void) {
 }
 
 // setters
+
+void user_config_toggle_cyber_colors_enable(void) {
+    user_config.cyber_colors_enable ^= 1; // bitwise xor to toggle status bit
+    user_config_write_eeprom();
+}
 
 void user_config_toggle_caps_lock_light_tab(void) {
     user_config.caps_lock_light_tab ^= 1; // bitwise xor to toggle status bit

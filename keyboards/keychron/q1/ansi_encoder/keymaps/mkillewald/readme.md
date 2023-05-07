@@ -1,4 +1,4 @@
-## Keychron Q1 Special Edition RGB ANSI ATMEGA32U4 ENC11 (knob) Keymap v2.0.1
+## Keychron Q1 Special Edition RGB ANSI ATMEGA32U4 ENC11 (knob) Keymap v2.0.2
 
 <img src="https://raw.githubusercontent.com/mkillewald/glamour_shots/main/keyboards/keychron/q1/IMG_5709.jpg" alt="Keychron Q1SE ANSI encoder" width="1000">
 
@@ -109,17 +109,12 @@ All custom keycodes can be moved to different keys in VIA by using the following
 - CUSTOM(67) = KC_FCTOG (default: Fn+V) Fn layer Color Toggle
 - CUSTOM(68) = KC_LBMAC (default Mac Only: Fn+Esc) Lock and Blank Mac
 
-## Known Issues
-
-1. Keychron factory reset (clear eeprom) Fn+J+Z is not working
-2. Keychron LED test Fn+Home+Right is not working
-
-It seems Keychron has not pushed the relavant code to the main QMK repo yet. I see the code is in Keychron's fork, and I may manually add that code here at some point.
-
-
 #### USE AT YOUR OWN RISK
 
 ## Changelog:
+
+v2.0.2  May 7, 2023
+- added keychron factory reset and factory led test
 
 v2.0.1  April 11, 2023
 - enabled separate RGB toggle for each base layer (Mac / Win)

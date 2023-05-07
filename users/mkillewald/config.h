@@ -16,4 +16,4 @@
 
 #pragma once
 
-#define EECONFIG_USER_DATA_SIZE 20  // size of eeprom data, do not change.
+#define EECONFIG_USER_DATA_SIZE 21  // size of eeprom data, do not change.

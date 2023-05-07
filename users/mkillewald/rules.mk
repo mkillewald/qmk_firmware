@@ -1,5 +1,5 @@
 RAW_ENABLE = no
-VIA_ENABLE = yes
+VIA_ENABLE = no
 
 SRC += mkillewald.c
 SRC += eeprom_user_config.c

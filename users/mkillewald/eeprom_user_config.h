@@ -21,6 +21,7 @@ void user_config_write_eeprom(void);
 
 // getters
 
+uint8_t user_config_get_cyber_colors_enable(void);
 uint8_t user_config_get_caps_lock_light_tab(void);
 uint8_t user_config_get_caps_lock_light_alphas(void);
 uint8_t user_config_get_fn_layer_transparent_keys_off(void);
@@ -36,6 +37,7 @@ HSV user_config_get_hsv_fn2(void);
 
 // setters
 
+void user_config_toggle_cyber_colors_enable(void);
 void user_config_toggle_caps_lock_light_tab(void);
 void user_config_toggle_caps_lock_light_alphas(void);
 void user_config_toggle_fn_layer_transparent_keys_off(void);
